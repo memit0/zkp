@@ -42,7 +42,7 @@ contract Whirlwind {
         publicInputs[2] = commitment;
         publicInputs[3] = bytes32(uint256(depositIndex)); // if depositIndex is uint256
 
-        require(msg.value == 0.1 ether, "Must deposit exactly 0.1 ETH");
+        require(msg.value == 0.01 ether, "Must deposit exactly 0.01 ETH");
         require(IVerifier(depositVerifier).verify(proof, publicInputs), "Invalid deposit proof");
 
         currentRoot = newRoot;
@@ -59,6 +59,6 @@ contract Whirlwind {
 
         usedNullifiers[nullifier] = true;
         emit Withdraw(msg.sender, nullifier);
-        payable(msg.sender).transfer(0.1 ether);
+        payable(msg.sender).transfer(0.01 ether);
     }
 }
